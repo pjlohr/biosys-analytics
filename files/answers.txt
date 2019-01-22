@@ -8,8 +8,6 @@ ls | md5sum
 du -shc
 grep -Eoi 'judge' *.txt | wc -l
 find . -type f -name  '*human*’  
-
-grep -cx '\s*' const.txt
 grep -Eoi 'scarlet' scarlet.txt | wc -l
 head -n15 -q *.txt > foo.txt (It is exactly 45 lines)
 wc -l foo.txt

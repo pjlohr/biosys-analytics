@@ -1,19 +1,25 @@
-undergraduate and graduate commands
+Undergraduate
 
-1)	ls
-2)	wc -l *
-3)	find . -size +50k
-4)	file const.txt
-5)	ls | md5sum 
-6)	grep -Eoi '\<c*|\<s*' *.txt | wc -l                     
-find . -type f -name  's*' -o -name 'c*' 
-7)	du -shc
-8)	grep -Eoi 'judge' *.txt | wc -l
-9)	find . -type f -name  '*human*’  
-10)	grep -Ec 'Article [[:digit:]]' const.txt
+ls
+wc -l *.txt
+find . -size +50k
+file const.txt
+ls | md5sum 
+du -shc
+grep -Eoi 'judge' *.txt | wc -l
+find . -type f -name  '*human*’  
+
 grep -cx '\s*' const.txt
-11)	grep -Eoi 'scarlet' scarlet.txt | wc -l
-12)	head -n50 foo.txt
-13)	wc -l foo.txt
-14)	rm foo.txt
-15)	grep -oni '^[aeiou]' scarlet.txt
+grep -Eoi 'scarlet' scarlet.txt | wc -l
+head -n15 -q *.txt > foo.txt (It is exactly 45 lines)
+wc -l foo.txt
+rm foo.txt
+
+
+Graduate
+
+grep -Eoi '\<c*|\<s*' *.txt | wc -l                     
+find . -type f -name  's*' -o -name 'c*' (depends on your definition of find words in files, could be file name)
+grep -Ec 'Article [[:digit:]]' const.txt
+grep -cx '\s*' const.txt
+grep -oni '^[aeiou]' scarlet.txt

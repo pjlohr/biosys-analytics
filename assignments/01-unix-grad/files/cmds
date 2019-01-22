@@ -1,0 +1,387 @@
+    1  ssh gatekeeper
+    2  exit
+    3  a
+    4  echo $PATH
+    5  python
+    6  ls
+    7  wget https://www.constitution.org/usdeclar.txt
+    8  git --version
+    9  git clone git@github.com/pjlohr/biosys-analytics.git
+   10  git clone github.com/pjlohr/biosys-analytics.git
+   11  cd
+   12  cd.ssh
+   13  $cd
+   14  $cd.ssh
+   15  quit
+   16  git --version
+   17  git clone git@github.com:pjlohr/biosys-analytics.git
+   18  cd
+   19  cd .ssh
+   20  cat id_rsa.pub
+   21  which
+   22  cat usdelcar.txt
+   23  car usdeclar.txt
+   24  cd
+   25  cd ..sh
+   26  cd .ssh
+   27  cat id_rsa.pub
+   28  cat id_rsa
+   29  cd
+   30  cd .ssh
+   31  cat id_rsa.pub
+   32  ls -al ~/.ssh
+   33  cat id_dsa.pub
+   34  cd/rsgrps/bh_class/pjlohr
+   35  cd
+   36  cd/rsgrps/bh_class/pjlohre
+   37  cd/rsgrps/bh_class/pjlohr
+   38  $ cd/rsgrps/bh_class/pjlohr
+   39  cd
+   40  git clone git@github.com:pjlohr/biosys-analytics.git
+   41  git status
+   42  git ls-tree --full-tree -r --name-only HEAD
+   43  git ls -files
+   44  git ls-files
+   45  git --help
+   46  git status
+   47  git
+   48  git --version
+   49  cd reponame
+   50  ls
+   51  get --help
+   52  git pull
+   53  cd /home/u4/pjlohr/biosys-analytics/.git/
+   54  git status
+   55  git remote add upstream https://github.com/hurwitzlab/biosys-analytics.git
+   56  git pull upstream master
+   57  cd
+   58  cd $HOME
+   59  ls
+   60  cat usdeclar.txt
+   61  git --version
+   62  git status
+   63  cd/rsgrps/bh_class/pjlohr
+   64  ls
+   65  git init
+   66  git status
+   67  git commit -m usdeclar.txt
+   68  git add usdeclar.txt
+   69  git status
+   70  git commit
+   71  git status
+   72  git commit -m
+   73  git commit -m "Work pls"
+   74  git status
+   75  wget https://www.usconstitution.net/const.txt
+   76  wget -O scarlet.txt https://www.gutenberg.org/files/25344/25344-0.txt
+   77  cat scarlet.txt
+   78  git help
+   79  git push
+   80  git push files
+   81  git push biosys-analytics
+   82  git push pjlohr/biosys-analytics
+   83  git remote
+   84  git remote add origin https://github.com/pjlohr/biosys-analytics
+   85  git remote -v
+   86  git help
+   87  cd
+   88  env
+   89  find files
+   90  find scarlet.txt
+   91  top
+   92  git rev-parse --show-toplevel
+   93  cd /home/u4/pjlohr
+   94  pwd
+   95  tree /home/u4/pjlohr
+   96  tree $HOME
+   97  cd
+   98  tree $HOME
+   99  cd $HOME
+  100  tree
+  101  ls
+  102  cwd
+  103  pwd
+  104  tree
+  105  /
+  106  echo
+  107  pwd
+  108  cd
+  109  pwd
+  110  ls -d */
+  111  cd /home/u4/pjlohr/biosys-analytics
+  112  cd /home/u4/pjlohr/biosys-analytics/files
+  113  mv scarlet.txt files/scarlet.txt
+  114  tree -F
+  115  man
+  116  tree
+  117  ls
+  118  pwd
+  119  cd
+  120  pwd
+  121  ls
+  122  mv const.txt scarlet.txt usdeclar.txt /biosys-analytics/files
+  123  mv const.txt scarlet.txt usdeclar.txt /files
+  124  mv const.txt scarlet.txt usdeclar.txt /home/u4/pjlohr/biosys-analytics/files
+  125  cd pjlohr/biosys-analytics/files
+  126  cd home/u4/pjlohr/biosys-analytics/files
+  127  ls -d */
+  128  cd home/u4/pjlohr/biosys-analytics
+  129  ls
+  130  cd /home/u4/pjlohr/biosys-analytics/files
+  131  ls
+  132  git add const.txt
+  133  git add scarlet.txt
+  134  git add usdeclar.txt
+  135  git commit
+  136  ls
+  137  git status
+  138  git commit -m Adding HW Files
+  139  git commit -m "Adding HW Files"
+  140  git push origin master
+  141  ls
+  142  cd /home/u4/phlojr/biosys-analytics/files
+  143  cd /home/u4/pjlohr/biosys-analytics/files
+  144  history
+  145  man
+  146  wc
+  147  man wc
+  148  ls
+  149  cd /home/u4/pjlohr/biosys-analytics/files
+  150  ls
+  151  git pull usptream master
+  152  git oull origin master
+  153  git pull origin master
+  154  ls
+  155  wc -l
+  156  wc -l scarlet.txt
+  157  wc -l usdeclar.txt
+  158  wc -l const.txt
+  159  wc -l *
+  160  ls -s
+  161  find . -size 50k
+  162  ls -s scarlet.txt
+  163  ls -sh
+  164  find . -size 50k
+  165  find . -size +50k
+  166  find . -sizeh +50k
+  167  file const.txt
+  168  md5 -q
+  169  md5sum -q
+  170  md5sum --help
+  171  md5sum --quiet
+  172  ls
+  173  ls | md5sum -c
+  174  md5sum
+  175  ls | md5
+  176  ls | md5sum
+  177  md5sum scarlet.txt
+  178  ls
+  179  md5sum const.txt
+  180  ls | md5sum
+  181  grep --help
+  182  grep a
+  183  grep a scarlet.txt
+  184  grep -ci '[cs]' const.txt
+  185  cd /home/u4/pjlohr/biosys-analytics/files
+  186  grep -ci '[cs]' const.txt
+  187  wc const.txt
+  188  wc --help
+  189  wc -w const.txt
+  190  grep -ci '[cs]' scarlet.txt
+  191  ls | grep -ci '[cs]'
+  192  ls
+  193  grep -ci '[cs]' usdelcar.txt
+  194  grep -ci '[cs]' usdeclar.txt
+  195  ls
+  196  grep -ci '[cs]' .*
+  197  .
+  198  / *
+  199  . *
+  200  grep --help
+  201  grep -Eci '[\bs\ba]' usdeclar.txt
+  202  history
+  203  grep -Eci '[\bs]' usdeclar.txt
+  204  cd /home/u4/pjlohr/biosys-analytics/files
+  205  grep -Eci '[\bs]' usdeclar.txt
+  206  grep -Eci '[\ba]' usdeclar.txt
+  207  grep -Eci '[\bs\ba]' usdeclar.txt
+  208  grep -E '\ba' usdeclar.txt
+  209  grep --help
+  210  grep -Eo '\ba' usdeclar.txt
+  211  grep --help
+  212  grep -Eio '\ba' usdeclar.txt
+  213  grep -Eio '\bs' usdeclar.txt
+  214  clear
+  215  grep -Eci '\ba|\bs' usdeclar.txt
+  216  grep -Eci '\ba' usdelcar.txt
+  217  grep -Eci '\ba' usdeclar.txt
+  218  grep -Eci '\bs' usdeclar.txt
+  219  grep -Eci '\ba' -Ece '\bs' usdeclar.txt
+  220  grep -Eci '\ba' -Eci '\bs' usdeclar.txt
+  221  grep -Eci '\ba' usdeclar.txt
+  222  grep -Eci '\ba | \bs' usdeclar.txt
+  223  grep -Eci '\ba
+  224  grep -Eci '\ba|s' usdeclar.txt
+  225  grep -Eci '\basasdfsdf' usdeclar.txt
+  226  grep -E '\ba' -E '\bs' usdeclar.txt
+  227  clear
+  228  grep --help
+  229  grep -Eci '\b[as]' usdeclar.txt
+  230  grep -Eci \b'[as]' usdeclar.txt
+  231  grep -Eci \b 'a|s' usdeclar.txt
+  232  grep -Eci '\ba|\bs' usdeclar.txt
+  233  grep -Eci '\ba'|'\bs' usdeclar.txt
+  234  clear
+  235  grep -Eci '\ba' usdeclar.txt
+  236  grep -Eci '\bs' usdeclar.txt
+  237  grep -Eci '\>a' usdeclar.txt
+  238  grep -Eci '\<a' usdeclar.txt
+  239  grep -Eci '\<s' usdeclar.txt
+  240  grep -Eci '\<s|\<a' usdeclar.txt
+  241  grep -Eci '[as]*\<' usdeclar.txt
+  242  grep -Eci '[as]\<' usdeclar.txt
+  243  grep -Eci '\<[as]' usdeclar.txt
+  244  cd /home/u4/pjlohr/biosys-analytics/files
+  245  md5sum *.txt
+  246  find --help
+  247  find '\<s'
+  248  find '\<s' *
+  249  find '\<s' .
+  250  find . -type f -name 'a*'
+  251  find . -type f -name  "a*"
+  252  find . -type f -name  "s*"
+  253  find . -type f -name  's*'
+  254  find . -type f -name  's*|c*'
+  255  find . -type f -name  's*\|c*'
+  256  find . -type f -name  's*' -o -name 'c*'
+  257  cd /home/u4/pjlohr/biosys-analytics/files
+  258  find . -type f -name  's*' -o -name 'c*' | wc -w
+  259  grep -Eic '\<a' *.txt
+  260  grep --help
+  261  clear
+  262  grep -o -i '\<s' *.txt
+  263  clear
+  264  grep -o -i '\<s' *.txt | wc -l
+  265  grep -o -i '\<s*' *.txt | wc -l
+  266  grep -o -i '\<c*' *.txt | wc -l
+  267  grep --help
+  268  grep -Eoi '<\s*' *.txt | wc-l
+  269  grep -Eoi '<\s*' *.txt | wc -l
+  270  grep -oi '<\s*' *.txt wc -l
+  271  grep -oi '<\s*' *.txt | wc -l
+  272  grep -oi '\<s*' *.txt | wc -l
+  273  grep -oi '\<c*' *.txt | wc -l
+  274  grep -oi '\<c*|\<s*' *.txt | wc -l
+  275  grep -Eoi '<\c*' *.txt | wc -l
+  276  grep -Eoi '\<c*' *.txt | wc -l
+  277  grep -Eoi '\<c*|\<s*' *.txt | wc -l
+  278  du -shc
+  279  grep -Eoi 'judge' *.txt | wc -l
+  280  grap -Ec 'Article *' *.txt
+  281  grep -Ec 'Article *' *.txt
+  282  grep -Ec 'Article [:digit:]' *.txt
+  283  grep -Ec 'Article [[:digit:]]' *.txt
+  284  grep -cvP '\S' *.txt
+  285  grep --help
+  286  grep -cx '\s*' *.txt
+  287  grep -cvP '\S' *.txt
+  288  grep -cvP '\S' const.txt
+  289  8)grep -Eoi 'scarlet' scarlet.txt | wc -l
+  290  grep -Eoi 'scarlet' scarlet.txt | wc -l
+  291  head --help
+  292  head -n 15 declar.txt
+  293  head -n 15 usdeclar.txt
+  294  cat --help
+  295  touch --help
+  296  head -n 15 | cat > foo.txt
+  297  pwd
+  298  ls
+  299  foo.txt
+  300  head -n 50 foo.txt
+  301  rm foo.txt
+  302  ls
+  303  head -n 15 | echo | cat > foo.txt
+  304  echo foo.txt
+  305  head -n 15 foo.txt
+  306  rm foo.txt
+  307  haed -n 15 *.txt > foo.txt
+  308  head -n 15 *.txt > foo.txt
+  309  ls
+  310  head -n 20 foo.txt
+  311  rm foo.txt
+  312  haed -n15 -q *.txt > foo.txt
+  313  head -n15 -q *.txt > foo.txt
+  314  head -n50 foo.txt
+  315  wc -l foo.txt
+  316  rm foo.txt
+  317  grep --help
+  318  clear
+  319  grep -Ein '\<[aeiou]' scarlet.txt
+  320  clear
+  321  grep -Eni '^[aeiou]' scarlet.txt
+  322  clear
+  323  grep -Eni '[^aeiou]' scarlet.txt
+  324  clear
+  325  grep -Eni ^\[aeiou] scarlet.txt
+  326  clear
+  327  grep --help
+  328  grep -ni ^[aeiou] scarlet.txt
+  329  grep -n^[aeiouAEIOU]scarlet.txt
+  330  grep -n ^[aeiouAEIOU] scarlet.txt
+  331  wc -l scarlet.tx
+  332  grep -noi ^[aeiou] scarlet.txt
+  333  grep -o ^[aeiou] scarlet.txt
+  334  clear
+  335  head n50 scarlet.txt
+  336  grep -oE '^[aeiou]' scarlet.txt
+  337  cd /home/u4/pjlohr/biosys-analytics/files
+  338  wc --help
+  339  wc
+  340  wc scarlet.txt
+  341  mc --help
+  342  man mv
+  343  man rm
+  344  man find
+  345  man env
+  346  find --help
+  347  man --help
+  348  pwd
+  349  man pwd
+  350  pwd
+  351  cw ./biosys-analytics/files
+  352  cd ./biosys-analytics/files
+  353  man ls
+  354  cot > foo
+  355  cat > foo
+  356  pwc
+  357  ls
+  358  cat foo
+  359  rm foo
+  360  ls
+  361  pwd
+  362  cd ./biosys-analytics/files
+  363  /
+  364  cd
+  365  $PATH
+  366  ls -a
+  367  echo "export PATH=/rsgrps/bh_class/conda/bin:/rsgrps/bh_class/bin:$PATH" >> ~/.bashrc
+  368  pwd
+  369  echo $PATH
+  370  git pull origin master
+  371  pwd
+  372  cd ./biosys-analytics/files
+  373  git add -A files
+  374  cd ..
+  375  git add -A files
+  376  git status
+  377  git commit
+  378  history > cmds
+  379  git add -A files
+  380  git status
+  381  git commit
+  382  git push origin master
+  383  git commit cmds
+  384  git add cmds
+  385  cd./files
+  386  cd ./files
+  387  history > cmds

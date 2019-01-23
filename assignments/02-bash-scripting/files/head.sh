@@ -1,10 +1,12 @@
+
 #!/bin/bash
 
+num_Lines=${2:-3}
 FILE=$1
 set -u
 
 if [[ $# -eq 0 ]]; then
-    echo "Usage"            
+    echo "Usage"
         exit 1
 fi
 
@@ -13,13 +15,21 @@ if [[ -f "$FILE" ]]; then
 
 else
     echo "First argument must be a file"
-	exit 1
+        exit 1
 fi
 
-i=0
+i=1
 while read -r LINE; do
 
+        if [[ $i -gt $num_Lines ]]; then
+                break
+        else
+
+            echo "$LINE"
+        fi
 	i=$((i+1))
-        echo "$i $LINE"
 
 done < "$FILE"
+
+
+

@@ -11,7 +11,6 @@ import sys
 
 # --------------------------------------------------
 def main():
-
     args = sys.argv[1:]
 
     if len(args) == 0:
@@ -22,7 +21,7 @@ def main():
     if not os.path.isfile(file):
         print('{} is not a file'.format(file))
         sys.exit(1)
-    
+
     if len(args) == 1:
         numlines = 3
     else:
@@ -38,5 +37,7 @@ def main():
         if i == numlines:
             break
         i += 1
+
+
 # --------------------------------------------------
 main()

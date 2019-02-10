@@ -26,14 +26,14 @@ def get_args():
 
     parser.add_argument(
         '-p',
-	'--player',
+        '--player',
         help='Player',
         metavar='str',
         type=str)
 
     parser.add_argument(
         '-c',
-	'--cell',
+        '--cell',
         help='Cell to apply -p',
         metavar='int',
         type=int)
@@ -46,31 +46,34 @@ def warn(msg):
     """Print a message to STDERR"""
     print(msg, file=sys.stderr)
 
+
 # --------------------------------------------------
 def die(msg='Something bad happened'):
     """warn() and exit with error"""
     warn(msg)
     sys.exit(1)
 
+
 # --------------------------------------------------
 def print_state(char_array):
     """print board state"""
-    view = ['']*9
+    view = [''] * 9
 
-    for i in range(0,9):
+    for i in range(0, 9):
         if char_array[i] == 'X':
             view[i] = 'X'
         elif char_array[i] == 'O':
             view[i] = 'O'
         else:
-            view[i] = str(i+1)
+            view[i] = str(i + 1)
     print('-------------')
-    print('{}{}{}'.format('| ',' | '.join(view[0:3]),' |'))
+    print('{}{}{}'.format('| ', ' | '.join(view[0:3]), ' |'))
     print('-------------')
-    print('{}{}{}'.format('| ',' | '.join(view[3:6]),' |'))
+    print('{}{}{}'.format('| ', ' | '.join(view[3:6]), ' |'))
     print('-------------')
-    print('{}{}{}'.format('| ',' | '.join(view[6:9]),' |'))
+    print('{}{}{}'.format('| ', ' | '.join(view[6:9]), ' |'))
     print('-------------')
+
 
 # --------------------------------------------------
 def main():
@@ -101,14 +104,16 @@ def main():
         sys.exit(1)
 
     elif all([cell, player]):
-    
+
         if state[cell - 1] == 'O' or state[cell - 1] == 'X':
             print('Cell {} already taken'.format(cell))
             sys.exit(1)
-            
+
         else:
             state[cell - 1] = player
             print_state(state)
+
+
 # --------------------------------------------------
 if __name__ == '__main__':
     main()

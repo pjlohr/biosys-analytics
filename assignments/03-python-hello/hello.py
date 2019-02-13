@@ -25,8 +25,6 @@ def main():
         names = ', '.join(sys.argv[1:-1])
         print('Hello to the ' + str(len(args)) + ' of you: ' + names + ', and ' + sys.argv[-1] + '!')
 
+
 # --------------------------------------------------
 main()
-
-
-

@@ -26,7 +26,7 @@ def main():
         print('There are ' + str(num_vowels) + ' vowels in "' + sys.argv[1] + '."')
     else:
         print('There is ' + str(num_vowels) + ' vowel in "' + sys.argv[1] + '."')
+
+
 # --------------------------------------------------
 main()
-
-

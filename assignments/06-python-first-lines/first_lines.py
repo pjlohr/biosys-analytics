@@ -58,9 +58,8 @@ def main():
             continue
         else:
             for file in os.listdir(dir):
-                path = os.path.join(os.getcwd(), dir)
-                path = os.path.join(path, file)
-                fh = open(path, "r")
+                file_path = os.path.join(os.getcwd(), dir, file)
+                fh = open(file_path, "r")
                 line = fh.readline().strip()
                 d[file] = line
 

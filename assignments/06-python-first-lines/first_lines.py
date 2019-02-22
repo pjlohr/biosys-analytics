@@ -65,7 +65,7 @@ def main():
 
         print(dir)
         for k, v in sorted(d.items(), key=lambda x: x[1]):
-            print('{} {} {}'.format(v, '.' * (width - len(v)) if len(v) <= width else '', k))
+            print('{} {} {}'.format(v, '.' * (width - len(v) - len(k)) if len(v) <= width else '', k))
 
         # sort dictionary
         # print dir name

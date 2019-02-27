@@ -92,10 +92,8 @@ def main():
             pct = gc / len(record.seq)
             if pct < thresh/100:
                 SeqIO.write(record, low, "fasta")
-                #low.write('Sequence #{}: {}\n'.format(num_seq, pct))
             elif pct >= thresh/100:
                 SeqIO.write(record, high, "fasta")
-                #high.write('Sequence #{}: {}\n'.format(num_seq, pct))
 
     print('Done, wrote {} sequences to out dir \"{}\"'.format(num_seq, out))
 

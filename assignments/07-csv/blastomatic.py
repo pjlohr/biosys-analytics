@@ -8,6 +8,8 @@ Purpose: Rock the Casbah
 import argparse
 import sys
 import os
+import csv
+import re
 
 
 # --------------------------------------------------
@@ -69,10 +71,22 @@ def main():
     if not os.path.exists(ann) and ann != '':
         die('\"{}\" is not a file'.format(ann))
 
+    with open(FILE) as csvfile:
+        dict_args = {'delimiter': '\t'}
+        names = ['qaccver','saccver','pident','length','mismatch','gapopen','qstart','qend','sstart','sendevalue','bitscore']
 
+        reader = csv.DictReader(csvfile, fieldnames = names, **dict_args)
 
-
-
+        for i, row in enumerate(reader, start=1):
+            vals = dict(row)
+            flds = vals.keys()
+            fmt = '{} : {}'
+            print('// ****** Record {} ****** //'.format(i))
+            n = 0
+            for key, val in vals.items():
+                n += 1
+                show = fmt.format(key, val)
+                print(show)
 
 # --------------------------------------------------
 if __name__ == '__main__':

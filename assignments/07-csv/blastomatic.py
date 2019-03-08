@@ -70,22 +70,20 @@ def main():
 
     if not os.path.isfile(ann) and ann != '':
         die('\"{}\" is not a file'.format(ann))
-    d = []
-    dict_args = {'delimiter': '\t'}
-    blastnames = ['qaccver', 'saccver', 'pident', 'length', 'mismatch', 'gapopen', 'qstart', 'qend', 'sstart',
-                  'sendevalue', 'bitscore']
-
+    matches = []
     with open(FILE, newline='') as csvfile:
+        print('seq_id\tpident\tgenus\tspecies')
         blastreader = csv.reader(csvfile, delimiter='\t')
         for brow in blastreader: # Loop through rows of blast file
             with open(ann, newline='') as annfile:
-                annreader = csv.reader(annfile, delimiter=',')
+                annreader = csv.reader(annfile)
                 for arow in annreader:   #loop through rows of annotation file
                     if brow[1] == arow[0]:
                         print('{}\t{}\t{}\t{}'.format(brow[1], brow[2], arow[6] if arow[6] != '' else 'NA', arow[7] if arow[7] != '' else 'NA'))
-                    #else:
-                        #print('cannot find seq \"{}\" in lookup'.format(brow[1]))
+                        matches.append(brow[1])
 
+            if brow[1] not in list:
+                warn('cannot find seq \"{}\" in lookup'.format(brow[1]))
 
 
 # --------------------------------------------------

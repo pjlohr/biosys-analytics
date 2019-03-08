@@ -63,7 +63,7 @@ def main():
     FILE = args.FILE
     results = {}
     if not os.path.isfile(out) and out != '':  # check if out directory exists, and make one if false
-        open(out, 'w')
+        sys.stdout = open(out, 'w')
 
     if not os.path.isfile(FILE):
         die('\"{}\" is not a file'.format(FILE))
@@ -82,7 +82,7 @@ def main():
                         print('{}\t{}\t{}\t{}'.format(brow[1], brow[2], arow[6] if arow[6] != '' else 'NA', arow[7] if arow[7] != '' else 'NA'))
                         matches.append(brow[1])
 
-            if brow[1] not in list:
+            if brow[1] not in matches:
                 warn('cannot find seq \"{}\" in lookup'.format(brow[1]))
 
 

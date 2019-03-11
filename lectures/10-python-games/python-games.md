@@ -226,6 +226,17 @@ If it's not a digit, we `continue` to go to the next iteration of the loop.  If 
 <type 'int'>
 ````
 
+There's an alternate way to handle the conversion of the guess using a `try/except` block (see `guess-try.py`) where the call to `int` is wrapped in a `try` block that has an `except` block that catches the exception that Python throws when it fails. Cf https://docs.python.org/3/tutorial/errors.html:
+
+````
+num = 0
+try:
+    num = int(guess)
+except:
+    warn('"{}" is not an integer'.format(guess))
+    continue
+````
+
 Now we need to determine if the user has guessed too many times, if the number if too high or low, or if they've won the game. Lastly we see if the user has exceeded the maximum number of guesses:
 
 ````
@@ -471,9 +482,10 @@ So I `open` the words file and `read` it and them immediately `split` into words
 
 ````
 words = []
-for word in open(wordlist).read().split():
-    if good_word.match(word):
-        words.append(word)
+for line in open(wordlist):
+	for word in line.split():
+	    if good_word.match(word):
+	        words.append(word)
 ````
 
 Similar to the guessing game, we need to randomly choose from our `words` which the `random.choice` function does exactly:
@@ -498,7 +510,7 @@ The `play` function is defined receiving a single `state` variable which is expe
 def play(state):
 ````
 
-The first time through `play`, there will be no previous guesses, so I use `dict.get` to ask for this so my code won't blow up. If nothing is avialable, I create a new string by multiplying the `_` (underscore) character by the length of the word where the underscore will indicate to the user where a letter has not been guessed. Since I want to store this as a list and not a string, I use `list` to convert the string:
+The first time through `play`, there will be no previous guesses, so I use `dict.get` to ask for this so my code won't blow up. If nothing is available, I create a new string by multiplying the `_` (underscore) character by the length of the word where the underscore will indicate to the user where a letter has not been guessed. Since I want to store this as a list and not a string, I use `list` to convert the string:
 
 ````
 guessed = state.get('guessed') or list('_' * len(word))
@@ -518,7 +530,7 @@ if ''.join(guessed) == word:
     bail(msg.format(word, num_misses, '' if num_misses == 1 else 'es'))
 ````
 
-The `bail` function is one I wrote just for this program as there are several places where I needed to `print` a message and `exit` *without an error code.
+The `bail` function is one I wrote just for this program as there are several places where I needed to `print` a message and `exit` *without* an error code.
 
 To get a new guess from the user, I use `input` and chain it to the `lower` method of the returned string to lowercase the value:
 
@@ -526,7 +538,7 @@ To get a new guess from the user, I use `input` and chain it to the `lower` meth
 new_guess = input('Your guess? ("?" for hint, "!" to quit) ').lower()
 ````
 
-Because `q` is a valid input from the user, I can't use it to `quit` so I decided to use bang. I also wanted to show mercy by allowing hints with the `?`. I this is implemented using another list comprehension to find all the letters in `word` that are *not* in the `guessed` set and then randomly select from that list:
+Because `q` is a valid input from the user, I can't use it to `quit` so I decided to use `!`. I also wanted to show mercy by allowing hints with the `?`. I this is implemented using another list comprehension to find all the letters in `word` that are *not* in the `guessed` set and then randomly select from that list:
 
 ````
 if new_guess == '!':
@@ -552,7 +564,7 @@ elif new_guess in prev_guesses:
         print('You already guessed that')
 ````
 
-Then we chec if the guess is a character in the word; if so, add it to our previous guesses:
+Then we check if the guess is a character in the word; if so, add it to our previous guesses:
 
 ````
 elif new_guess in word:
@@ -566,7 +578,7 @@ This next bit is tricky. We need to `find` the position(s) of the character in t
 [(0, 'f'), (1, 'o'), (2, 'o')]
 ````
 
-If we `find` "o", it will always return `1` unless we tell it to start looking after that position:
+`'foo'.find('o')` will always return `1` unless we tell it to start looking after that position:
 
 ````
 >>> 'foo'.find('o')
@@ -577,7 +589,7 @@ If we `find` "o", it will always return `1` unless we tell it to start looking a
 2
 ````
 
-So we set up a variable `last_pos` to set to *after* whatever `find` returns. We need that in order to turn the underscore in `guessed` into the actual letter:
+So we set up a variable `last_pos` to set to *after* whatever `find` returns. We need that in order to turn the underscore in `guessed` into the actual letter. Note that `find` will return `-1` to indicate no matches.
 
 ````
     last_pos = 0
@@ -602,4 +614,4 @@ play({
 })
 ````
 
-This is an example of a recursive algorithm, and they only work if you first handle the "base case." For Hangman, that is where the user guesses the word or exceeds the number of guesses, both of which will `bail` on the program; otherwise, the program continues to the next iteration.
+This is an example of a recursive algorithm (https://readtheplaque.com/plaque/the-toronto-recursive-history-project), and they only work if you first handle the "base case." For Hangman, that is where the user guesses the word or exceeds the number of guesses, both of which will `bail` on the program; otherwise, the program continues to the next iteration.

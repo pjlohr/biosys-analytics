@@ -71,21 +71,26 @@ def main():
     skip = args.skip
     keyword = args.keyword
     out = args.output
-    i = 0;
-    if not os.path.exists(swiss):  # check if out directory exists, and make one if false
+
+    if not os.path.isfile(swiss):
         die('\"{}\" is not a file'.format(swiss))
 
-    if not os.path.exists(out):  # check if out directory exists, and make one if false
-        os.makedirs(out)
+    print('Processing \"{}\"'.format(swiss))
 
+    take = 0
+    num_records = 0
+    out_fh = open(out, 'w+')
+    skip = [x.lower() for x in skip]
     with open(swiss) as swiss_fh:
         for record in SeqIO.parse(swiss_fh, 'swiss'):
+            num_records += 1
             if keyword in [x.lower() for x in record.annotations['keywords']]:
                 if not any([I for I in skip if I in [x.lower() for x in record.annotations['taxonomy']]]):
-                    i += 1
-                    #print(record.annotations['taxonomy'])
-    print(i)
-    print(skip)
+                    take += 1
+                    SeqIO.write(record, out_fh, 'fasta')
+
+    print('Done, skipped {} and took {}. See output in \"{}\".'.format(num_records - take, take, out))
+
 
 # --------------------------------------------------
 if __name__ == '__main__':

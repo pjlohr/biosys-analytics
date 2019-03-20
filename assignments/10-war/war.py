@@ -43,22 +43,13 @@ def die(msg='Something bad happened'):
     sys.exit(1)
 
 
-# --------------------------------------------------
-def main():
-    """Make a jazz noise here"""
-    args = get_args()
-    seed = args.seed
-
-    if seed is not None:
-        random.seed(seed)
-
+def create_deck():
+    """create deck of cards"""
     cards = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A']
     suits = ['♥', '♠', '♣', '♦']
     prod = list(product(suits, cards))
     deck = []
     values = {}
-    result = ''
-    final = ''
 
     for tup in prod:
         deck.append(''.join(tup))
@@ -75,8 +66,27 @@ def main():
         elif face == 'A':
             values[card] = 14
 
+    return {'deck': deck, 'values': values}
+
+
+# --------------------------------------------------
+def main():
+    """Make a jazz noise here"""
+    args = get_args()
+    seed = args.seed
+
+    if seed is not None:
+        random.seed(seed)
+
+    var = create_deck()
+    deck = var['deck']
+    values = var['values']
+
     deck.sort()
     random.shuffle(deck)
+
+    result = ''
+    final = ''
     p1wins = 0
     p2wins = 0
 

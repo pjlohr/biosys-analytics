@@ -42,26 +42,22 @@ def main():
     args = get_args()
     date = args.DATE
 
-    test = '123456#p654321'
-    match = re.match('([0-9]*)(?:#p([0-9]*))?', test)
-    print(match.groups())
-
     date_re = re.compile('(?P<year>\d{4})'
-                         '[/.-]'
+                         '[/.-]?'
                          '(?P<month>\d{2})'
-                         '(?:[/.-](?P<day>\d{2}))?')
+                         '(?:[/.-]?(?P<day>\d{2}))?')
 
-    dates = ['1999-01-01', '1999/01/01', '1999.01.01']
-
-    for d in dates:
-        match = date_re.match(d)
-        print('{}: {}'.format(d, 'match' if match else 'miss'))
+    dates = open('eg_dates.txt', 'r')
+    # dates = ['12/06']
+    for line in dates:
+        match = date_re.match(line)
         if match:
-            print('{} = year "{}" month "{}" day "{}"'.format(d,
-                                                              match.group('year'),
-                                                              match.group('month'),
-                                                              match.group('day') if match.group('day') is not None else '01'))
-        print()
+            print('{}-{}-{}'.format(match.group('year'),
+                                    match.group('month'),
+                                    match.group('day') if match.group('day') is not None else '01'))
+        else:
+            print('No match')
+
 
 # --------------------------------------------------
 if __name__ == '__main__':

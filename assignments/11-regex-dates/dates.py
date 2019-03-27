@@ -49,8 +49,7 @@ def main():
     date_re = re.compile('(?P<year>\d{4})'
                          '[/.-]'
                          '(?P<month>\d{2})'
-                         '[/.-]'
-                         '(?P<day>\d{2})')
+                         '(?:[/.-](?P<day>\d{2}))?')
 
     dates = ['1999-01-01', '1999/01/01', '1999.01.01']
 
@@ -61,7 +60,7 @@ def main():
             print('{} = year "{}" month "{}" day "{}"'.format(d,
                                                               match.group('year'),
                                                               match.group('month'),
-                                                              match.group('day')))
+                                                              match.group('day') if match.group('day') is not None else '01'))
         print()
 
 # --------------------------------------------------

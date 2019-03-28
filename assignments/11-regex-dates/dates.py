@@ -42,30 +42,49 @@ def main():
     args = get_args()
     date = args.DATE
 
-
-
     date = open('eg_dates.txt', 'r')
     # dates = ['12/06']
+
+    short = 'Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec'.split()
+    long = ('January February March April May June July August '
+            'September October November December').split()
+
+    d_short = dict(map(reversed, enumerate(short, 1)))
+    d_long = dict(map(reversed, enumerate(long, 1)))
     for line in date:
         if not line.strip().isdigit():
             date_re = re.compile('(?P<first>.+?)'
                                  '[,/.-]'
                                  '[ ]?(?P<second>\d+)'
                                  '(?:[.-]?(?P<third>\d{2}))?')
-
         else:
-            date_re = re.compile('(?P<year>\d{4})'
-                             '(?P<month>\d{2})'
-                             '(?P<day>\d{2})')
+            date_re = re.compile('(?P<first>\d{4})'
+                                 '(?P<second>\d{2})'
+                                 '(?P<third>\d{2})')
 
         match = date_re.match(line)
         if match:
-            print('{} - {} - {}'.format(match.group('year'),
-                                        match.group('month'),
-                                        match.group('day') if match.group('day') is not None else '01'))
+            first = match.group('first')
+            second = int(match.group('second'))
+            third = match.group('third')
+            third = int(third) if third is not None else None
+
+            if not first.isdigit():  # month as string
+                first = d_short[first] if len(first) <= 3 else d_long[first]
+                first, second = second, first  # swap
+
+            elif first.isdigit() and len(first) <= 2:  # handle cases like 2/14
+                third = None
+                first = int(first)
+                second = second + 2000  # bad way of formatting
+                first, second = second, first  # swap
+
+            print('{}-{:02d}-{:02d}'.format(first, second, third if third is not None else 1))
+
         else:
             print('No match')
             print(line)
+
 
 # --------------------------------------------------
 if __name__ == '__main__':

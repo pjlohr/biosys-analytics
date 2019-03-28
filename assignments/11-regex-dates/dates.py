@@ -42,22 +42,30 @@ def main():
     args = get_args()
     date = args.DATE
 
-    date_re = re.compile('(?P<year>\d{4})'
-                         '[/.-]?'
-                         '(?P<month>\d{2})'
-                         '(?:[/.-]?(?P<day>\d{2}))?')
 
-    dates = open('eg_dates.txt', 'r')
+
+    date = open('eg_dates.txt', 'r')
     # dates = ['12/06']
-    for line in dates:
+    for line in date:
+        if not line.strip().isdigit():
+            date_re = re.compile('(?P<first>.+?)'
+                                 '[,/.-]'
+                                 '[ ]?(?P<second>\d+)'
+                                 '(?:[.-]?(?P<third>\d{2}))?')
+
+        else:
+            date_re = re.compile('(?P<year>\d{4})'
+                             '(?P<month>\d{2})'
+                             '(?P<day>\d{2})')
+
         match = date_re.match(line)
         if match:
-            print('{}-{}-{}'.format(match.group('year'),
-                                    match.group('month'),
-                                    match.group('day') if match.group('day') is not None else '01'))
+            print('{} - {} - {}'.format(match.group('year'),
+                                        match.group('month'),
+                                        match.group('day') if match.group('day') is not None else '01'))
         else:
             print('No match')
-
+            print(line)
 
 # --------------------------------------------------
 if __name__ == '__main__':

@@ -14,16 +14,17 @@ import re
 def main():
     args = sys.argv[1:]
 
-    if len(args) != 2:
+    if len(args) < 2:
         print('Usage: {} PASSWORD ALT'.format(os.path.basename(sys.argv[0])))
         sys.exit(1)
 
-    password, alt = args
+    password = args[0]
+    alt = args[1]
 
-    ucfirst = password[0].upper() + password[1:]
+    capPass = password[0].upper() + password[1:]
 
     ok = (password == alt) or (password.upper() == alt) or (
-        ucfirst == alt) or re.match('.?' + password + '.?', alt)
+        capPass == alt) or re.match('.?' + password + '.?', alt)
 
     print('ok' if ok else 'nah')
 

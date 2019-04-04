@@ -129,6 +129,7 @@ def test_06():
         year2, month2, day2, hour2, minute2, sec2 = gen_date()
         dt = '{}-{}-{}/{}-{}-{}'.format(year1, month1, day1, year2, month2,
                                         day2)
+        print(dt)
         out = getoutput('{} {}'.format(prg, dt))
         expected = '{:02d}-{:02d}-{:02d}'.format(year1, month1, day1)
         assert out == expected
@@ -194,4 +195,6 @@ def test_bad_input():
     sep = random.choice(list('!@@#$%^&*():[]:;/?,.~|'))
     out = getoutput('{} "{}"'.format(prg, sep.join(map(str,
                                                      [year, month, day]))))
+    print(sep.join(map(str,
+                                                     [year, month, day])))
     assert out == 'No match'

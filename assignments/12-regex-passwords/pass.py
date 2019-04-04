@@ -20,11 +20,19 @@ def main():
 
     password = args[0]
     alt = args[1]
+    find = re.compile('.?' + password + '.?')
+    cap_first = password[0].upper() + password[1:]
+    match = find.match(alt)
+    ok = False
 
-    capPass = password[0].upper() + password[1:]
-
-    ok = (password == alt) or (password.upper() == alt) or (
-        capPass == alt) or re.match('.?' + password + '.?', alt)
+    if password == alt:
+        ok = True
+    elif password.upper() == alt:
+        ok = True
+    elif cap_first == alt:
+        ok = True
+    elif match:
+        ok = True
 
     print('ok' if ok else 'nah')
 

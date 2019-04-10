@@ -54,6 +54,8 @@ def find_kmers(s, k):
             kmers.append(match)
 
     return kmers
+
+
 # --------------------------------------------------
 def main():
     """Make a jazz noise here"""
@@ -78,8 +80,6 @@ def main():
         for bid, bkmer in begin.items():
             if ekmer == bkmer and eid != bid:
                 print(eid, bid)
-
-    #print(find_kmers('ABCD', 2))
 
 
 # --------------------------------------------------

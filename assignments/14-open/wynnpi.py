@@ -14,7 +14,7 @@ import numpy as np
 def get_args():
     """get command-line arguments"""
     parser = argparse.ArgumentParser(
-        description='Wynn Epsilon for Gregory-Leiniz series',
+        description='Wynn Epsilon for Gregory-Leibniz series',
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
     parser.add_argument(

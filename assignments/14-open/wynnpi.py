@@ -80,6 +80,7 @@ def main():
     print('Wynn Epsilon accelerated result ({:02d} terms): {:0.15f}'.format(n, er[-1, -1]))
     print('Actual Value: {:47}\n'.format(np.pi))
 
+
 # --------------------------------------------------
 if __name__ == '__main__':
     main()

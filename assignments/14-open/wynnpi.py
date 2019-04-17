@@ -45,21 +45,20 @@ def wynnepsilon(sn, r):
     """Perform Wynn Epsilon Convergence Algorithm"""
     r = int(r)
     n = 2 * r + 1
-    E = np.zeros(shape=(n+1, n+1))
+    E = np.zeros(shape=(n + 1, n + 1))
     Er = np.zeros(shape=(r, r))
 
-    for i in range(1, n+1):
-        print(i)
-        E[i, 1] = sn[i-1]
+    for i in range(1, n + 1):
+        E[i, 1] = sn[i - 1]
 
-    for i in range(3, n+2):
-        for j in range(3, i+1):
-            E[i-1, j-1] = E[i - 2, j - 3] + 1 / (E[i-1, j - 2] - E[i - 2, j - 2])
-    print(E)
+    for i in range(3, n + 2):
+        for j in range(3, i + 1):
+            E[i - 1, j - 1] = E[i - 2, j - 3] + 1 / (E[i - 1, j - 2] - E[i - 2, j - 2])
 
-    Er = E[:, 1:n+1:2]
+    Er = E[:, 1:n + 1:2]
+    return Er
 
-    print(Er)
+
 # --------------------------------------------------
 def main():
     """Make a jazz noise here"""
@@ -71,8 +70,9 @@ def main():
         term = 4 * np.power(-1, k) / (2 * k + 1)
         sum += term
         Psum.append(sum)
-    print(Psum)
-    wynnepsilon(Psum, np.floor((N - 1) / 2))
+
+    Er = wynnepsilon(Psum, np.floor((N - 1) / 2))
+    print(Er[-1, -1])
 
 
 # --------------------------------------------------

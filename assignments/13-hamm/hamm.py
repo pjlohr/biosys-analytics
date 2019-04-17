@@ -42,7 +42,6 @@ def die(msg='Something bad happened'):
 
 # --------------------------------------------------
 def dist(str1, str2):
-
     maxlen = len(str2) if len(str1) < len(str2) else len(str1)
     delta = 0
     for i in range(maxlen):

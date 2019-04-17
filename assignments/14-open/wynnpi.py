@@ -20,7 +20,7 @@ def get_args():
     parser.add_argument(
         '-n',
         '--numterms',
-        help='Number of series terms (1<=n<=24)',
+        help='Number of series terms (1<=n<=22)',
         metavar='INT',
         type=int,
         default=10)
@@ -67,7 +67,7 @@ def main():
     ps = []
     s = 0
 
-    if not 1 <= n <= 24:
+    if not 1 <= n <= 22:
         die('Number of terms "{}" must be between 1 and 24, inclusive'.format(n))
 
     for k in range(0, n):

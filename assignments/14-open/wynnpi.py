@@ -46,7 +46,6 @@ def wynnepsilon(sn, r):
     r = int(r)
     n = 2 * r + 1
     e = np.zeros(shape=(n + 1, n + 1))
-    er = np.zeros(shape=(r, r))
 
     for i in range(1, n + 1):
         e[i, 1] = sn[i - 1]

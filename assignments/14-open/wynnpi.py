@@ -45,35 +45,37 @@ def wynnepsilon(sn, r):
     """Perform Wynn Epsilon Convergence Algorithm"""
     r = int(r)
     n = 2 * r + 1
-    E = np.zeros(shape=(n + 1, n + 1))
-    Er = np.zeros(shape=(r, r))
+    e = np.zeros(shape=(n + 1, n + 1))
+    er = np.zeros(shape=(r, r))
 
     for i in range(1, n + 1):
-        E[i, 1] = sn[i - 1]
+        e[i, 1] = sn[i - 1]
 
     for i in range(3, n + 2):
         for j in range(3, i + 1):
-            E[i - 1, j - 1] = E[i - 2, j - 3] + 1 / (E[i - 1, j - 2] - E[i - 2, j - 2])
+            e[i - 1, j - 1] = e[i - 2, j - 3] + 1 / (e[i - 1, j - 2] - e[i - 2, j - 2])
 
-    Er = E[:, 1:n + 1:2]
-    return Er
+    er = e[:, 1:n + 1:2]
+    return er
 
 
 # --------------------------------------------------
 def main():
     """Make a jazz noise here"""
-    args = get_args()
-    N = args.numterms
-    Psum = []
-    sum = 0
-    for k in range(0, N):
-        term = 4 * np.power(-1, k) / (2 * k + 1)
-        sum += term
-        Psum.append(sum)
 
-    Er = wynnepsilon(Psum, np.floor((N - 1) / 2))
-    print('\nSeries approximation for π ({} terms): {:0.10f}'.format(N, sum))
-    print('Wynn Epsilon accelerated result ({} terms): {:0.10f}\n'.format(N, Er[-1, -1]))
+    args = get_args()
+    n = args.numterms
+    ps = []
+    s = 0
+
+    for k in range(0, n):
+        term = 4 * np.power(-1, k) / (2 * k + 1)
+        s += term
+        ps.append(s)
+
+    er = wynnepsilon(ps, np.floor((n - 1) / 2))
+    print('\nSeries approximation for π ({} terms): {:0.10f}'.format(n, s))
+    print('Wynn Epsilon accelerated result ({} terms): {:0.10f}\n'.format(n, er[-1, -1]))
 
 
 # --------------------------------------------------

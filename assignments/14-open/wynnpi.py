@@ -68,7 +68,7 @@ def main():
     s = 0
 
     if not 1 <= n <= 22:
-        die('Number of terms "{}" must be between 1 and 24, inclusive'.format(n))
+        die('-n Number of terms "{}" must be between 1 and 24, inclusive'.format(n))
 
     for k in range(0, n):
         term = 4 * np.power(-1, k) / (2 * k + 1)

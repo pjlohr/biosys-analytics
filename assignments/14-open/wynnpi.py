@@ -20,7 +20,7 @@ def get_args():
     parser.add_argument(
         '-n',
         '--numterms',
-        help='Number of series terms',
+        help='Number of series terms (1<=n<=24)',
         metavar='INT',
         type=int,
         default=10)
@@ -67,15 +67,18 @@ def main():
     ps = []
     s = 0
 
+    if not 1 <= n <= 24:
+        die('Number of terms "{}" must be between 1 and 24, inclusive'.format(n))
+
     for k in range(0, n):
         term = 4 * np.power(-1, k) / (2 * k + 1)
         s += term
         ps.append(s)
 
     er = wynnepsilon(ps, np.floor((n - 1) / 2))
-    print('\nSeries approximation for π ({} terms): {:0.10f}'.format(n, s))
-    print('Wynn Epsilon accelerated result ({} terms): {:0.10f}\n'.format(n, er[-1, -1]))
-
+    print('\nSeries approximation for π ({} terms): {:0.15f}'.format(n, s))
+    print('Wynn Epsilon accelerated result ({} terms): {:0.15f}'.format(n, er[-1, -1]))
+    print('Actual Value: {}\n'.format(np.pi))
 
 # --------------------------------------------------
 if __name__ == '__main__':

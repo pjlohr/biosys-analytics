@@ -76,9 +76,14 @@ def main():
         ps.append(s)
 
     er = wynnepsilon(ps, np.floor((n - 1) / 2))
+    last = er[-1, -1]
+    rel = abs(last - np.pi) / np.pi
+
     print('\nSeries approximation for π ({:02d} terms):      {:0.15f}'.format(n, s))
-    print('Wynn Epsilon accelerated result ({:02d} terms): {:0.15f}'.format(n, er[-1, -1]))
-    print('Actual Value: {:47}\n'.format(np.pi))
+    print('Wynn Epsilon accelerated result ({:02d} terms): {:0.15f}'.format(n, last))
+    print('Actual Value: {:47}'.format(np.pi))
+    print('Relative Error: {:50}\n'.format(rel))
+
 
 
 # --------------------------------------------------

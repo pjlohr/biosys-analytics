@@ -72,7 +72,8 @@ def main():
         Psum.append(sum)
 
     Er = wynnepsilon(Psum, np.floor((N - 1) / 2))
-    print(Er[-1, -1])
+    print('\nSeries approximation for π ({} terms): {:0.10f}'.format(N, sum))
+    print('Wynn Epsilon accelerated result ({} terms): {:0.10f}\n'.format(N, Er[-1, -1]))
 
 
 # --------------------------------------------------

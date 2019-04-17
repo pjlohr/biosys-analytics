@@ -43,22 +43,23 @@ def die(msg='Something bad happened'):
 
 def wynnepsilon(sn, r):
     """Perform Wynn Epsilon Convergence Algorithm"""
-
-    n = 2 * int(r) + 1
+    r = int(r)
+    n = 2 * r + 1
     E = np.zeros(shape=(n+1, n+1))
+    Er = np.zeros(shape=(r, r))
 
-    for i in range(0, n):
-        E[i + 1, 1] = sn[i]
+    for i in range(1, n+1):
+        print(i)
+        E[i, 1] = sn[i-1]
 
+    for i in range(3, n+2):
+        for j in range(3, i+1):
+            E[i-1, j-1] = E[i - 2, j - 3] + 1 / (E[i-1, j - 2] - E[i - 2, j - 2])
+    print(E)
 
+    Er = E[:, 1:n+1]
 
-    # for i in range(2, n):
-    #     for j in range(2, i):
-    #         E[i, j] = E[i - 1, j - 2] + 1 / (E[i, j - 1] - E[i - 1, j - 1])
-    # print(E)
-    # Er = E(:, 2: 2:n + 1)
-
-
+    print(Er)
 # --------------------------------------------------
 def main():
     """Make a jazz noise here"""
@@ -70,8 +71,8 @@ def main():
         term = 4 * np.power(-1, k) / (2 * k + 1)
         sum += term
         Psum.append(sum)
-
-    wynnepsilon(Psum, (N - 1) / 2)
+    print(Psum)
+    wynnepsilon(Psum, np.floor((N - 1) / 2))
 
 
 # --------------------------------------------------

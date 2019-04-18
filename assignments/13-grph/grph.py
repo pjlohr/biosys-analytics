@@ -18,16 +18,10 @@ def get_args():
         description='Argparse Python script',
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
-    parser.add_argument(
-        'FILE', metavar='FILE', help='FASTA file')
+    parser.add_argument('FILE', metavar='FILE', help='FASTA file')
 
     parser.add_argument(
-        '-k',
-        '--overlap',
-        help='Overlap',
-        metavar='int',
-        type=int,
-        default=3)
+        '-k', '--overlap', help='Overlap', metavar='int', type=int, default=3)
 
     return parser.parse_args()
 

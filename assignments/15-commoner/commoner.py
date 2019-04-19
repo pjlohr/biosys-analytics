@@ -114,13 +114,16 @@ def main():
         words2 += line.split()
 
     tup = list(zip(words1, words2))
-
+    matches = {}
     for str1, str2 in tup:
         d = dist(str1, str2)
         if (len(str1) and len(str2)) >= min:
             if d <= hamm:
-                print(str1, str2, d)
+                matches[(str1, str2)] = d
+    matches = sorted([(x[0], x[1]) for x in matches.items()])
 
+    for words, count in matches:
+        print(words, count)
 # --------------------------------------------------
 if __name__ == '__main__':
     main()

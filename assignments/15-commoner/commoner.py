@@ -10,6 +10,7 @@ import sys
 import logging
 import re
 import io
+from tabulate import tabulate as tbl
 
 
 # --------------------------------------------------
@@ -157,16 +158,29 @@ def main():
     words2 = sorted(uniq_words(file2, min_len))
     tup = list(zip(words1, words2))
     matches = {}
-
+    hd = []
     for str1, str2 in tup:
         d = dist(str1, str2)
         if d <= hamm:
             matches[(str1, str2)] = d
+            hd.append(d)
 
+    # words1, words2 = map(list, zip(*tup))
     if len(matches) > 0:
-        print('{:11}{:11}{}'.format('word1', 'word2', 'distance'))
-        for pairs, count in matches.items():
-            print('{:11}{:11}{}'.format(pairs[0], pairs[1], count))
+        if table:
+            t = []
+            for pairs, count in matches.items():
+                col1 = pairs[0]
+                col2 = pairs[1]
+                col3 = count
+                column = col1, col2, col3
+                t.append(column)
+
+            print(tbl(t, headers=['word1', 'word2', 'distance'], tablefmt='psql'))
+        else:
+            print('{:11}{:11}{}'.format('word1', 'word2', 'distance'))
+            for pairs, count in matches.items():
+                print('{:11}{:11}{}'.format(pairs[0], pairs[1], count))
     else:
         print('No words in common')
 

@@ -99,13 +99,13 @@ def test_dist():
 
 
 # --------------------------------------------------
-def uniq_words(file, min):
+def uniq_words(file, min_len):
     words = set()
 
     for line in file:
         for word in line.split():
             word = re.sub('[^a-zA-Z0-9]', '', word).lower()
-            if len(word) >= min:
+            if len(word) >= min_len:
                 words.add(word)
 
     return words
@@ -118,62 +118,55 @@ def test_uniq_words():
     s1 = '?foo, "bar", FOO: $fa,'
     s2 = '%Apple.; -Pear. ;bANAna!!!'
 
-    assert uniq_words(io.StringIO(s1), 0) == set(['foo', 'bar', 'fa'])
+    assert uniq_words(io.StringIO(s1), 0) == {'foo', 'bar', 'fa'}
 
-    assert uniq_words(io.StringIO(s1), 3) == set(['foo', 'bar'])
+    assert uniq_words(io.StringIO(s1), 3) == {'foo', 'bar'}
 
-    assert uniq_words(io.StringIO(s2), 0) == set(['apple', 'pear', 'banana'])
+    assert uniq_words(io.StringIO(s2), 0) == {'apple', 'pear', 'banana'}
 
-    assert uniq_words(io.StringIO(s2), 4) == set(['apple', 'pear', 'banana'])
+    assert uniq_words(io.StringIO(s2), 4) == {'apple', 'pear', 'banana'}
 
-    assert uniq_words(io.StringIO(s2), 5) == set(['apple', 'banana'])
+    assert uniq_words(io.StringIO(s2), 5) == {'apple', 'banana'}
 
 
 # --------------------------------------------------
 def main():
     """Make a jazz noise here"""
     args = get_args()
-    min = args.min_len
+    min_len = args.min_len
     files = args.FILE
     hamm = args.hamming_distance
     logfile = args.logfile
     table = args.table
 
     logging.basicConfig(
-        filename='.log',
+        filename=logfile,
         filemode='w',
         level=logging.DEBUG if args.debug else logging.CRITICAL
     )
 
-    logging.debug('file1 = {}, file2 = {}'.format(files[0], files[1]))
+    file1 = files[0]
+    file2 = files[1]
+
+    logging.debug('file1 = {}, file2 = {}'.format(file1, file2))
 
     if hamm < 0:
         die('--distance "{}" must be > 0'.format(hamm))
 
-    words1 = []
-    words2 = []
-
-    for line1, line2, in files:
-        words1 += list(map(str.lower, line1.split()))
-        words2 += list(map(str.lower, line2.split()))
-
+    words1 = sorted(uniq_words(file1, min_len))
+    words2 = sorted(uniq_words(file2, min_len))
     tup = list(zip(words1, words2))
     matches = {}
 
     for str1, str2 in tup:
         d = dist(str1, str2)
-        if (len(str1) and len(str2)) >= min:
-            if d <= hamm:
-                matches[(str1, str2)] = d
-
-    matches = sorted([(x[0], x[1]) for x in matches.items()])
+        if d <= hamm:
+            matches[(str1, str2)] = d
 
     if len(matches) > 0:
         print('{:11}{:11}{}'.format('word1', 'word2', 'distance'))
-        for pairs, count in matches:
-            word1 = re.sub('[^a-zA-Z0-9]', '', pairs[0])
-            word2 = re.sub('[^a-zA-Z0-9]', '', pairs[1])
-            print('{:11}{:11}{}'.format(word1, word2, count))
+        for pairs, count in matches.items():
+            print('{:11}{:11}{}'.format(pairs[0], pairs[1], count))
     else:
         print('No words in common')
 

@@ -158,14 +158,12 @@ def main():
     words2 = sorted(uniq_words(file2, min_len))
     tup = list(zip(words1, words2))
     matches = {}
-    hd = []
+
     for str1, str2 in tup:
         d = dist(str1, str2)
         if d <= hamm:
             matches[(str1, str2)] = d
-            hd.append(d)
 
-    # words1, words2 = map(list, zip(*tup))
     if len(matches) > 0:
         if table:
             t = []

@@ -165,20 +165,19 @@ def main():
             matches[(str1, str2)] = d
 
     if len(matches) > 0:
-        if table:
-            t = []
-            for pairs, count in matches.items():
-                col1 = pairs[0]
-                col2 = pairs[1]
-                col3 = count
-                column = col1, col2, col3
-                t.append(column)
+        t = []
+        for pairs, count in matches.items():
+            col1 = pairs[0]
+            col2 = pairs[1]
+            col3 = count
+            column = col1, col2, col3
+            t.append(column)
 
+        if table:
             print(tbl(t, headers=['word1', 'word2', 'distance'], tablefmt='psql'))
         else:
-            print('{:11}{:11}{}'.format('word1', 'word2', 'distance'))
-            for pairs, count in matches.items():
-                print('{:11}{:11}{}'.format(pairs[0], pairs[1], count))
+            print(tbl(t, headers=['word1', 'word2', 'distance'], tablefmt='plain', numalign="left"))
+
     else:
         print('No words in common')
 

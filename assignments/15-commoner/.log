@@ -1,0 +1,1 @@
+DEBUG:root:file1 = <_io.TextIOWrapper name='data/fox.txt' mode='r' encoding='UTF-8'>, file2 = <_io.TextIOWrapper name='data/fox.txt' mode='r' encoding='UTF-8'>

@@ -7,9 +7,9 @@ Purpose: Rock the Casbah
 
 import argparse
 import sys
-import os
 import logging
 import re
+import io
 
 
 # --------------------------------------------------
@@ -86,6 +86,50 @@ def dist(str1, str2):
 
 
 # --------------------------------------------------
+def test_dist():
+    """dist ok"""
+
+    tests = [('foo', 'boo', 1), ('foo', 'faa', 2), ('foo', 'foobar', 3),
+             ('TAGGGCAATCATCCGAG', 'ACCGTCAGTAATGCTAC',
+              9), ('TAGGGCAATCATCCGG', 'ACCGTCAGTAATGCTAC', 10)]
+
+    for s1, s2, n in tests:
+        d = dist(s1, s2)
+        assert d == n
+
+
+# --------------------------------------------------
+def uniq_words(file, min):
+    words = set()
+
+    for line in file:
+        for word in line.split():
+            word = re.sub('[^a-zA-Z0-9]', '', word).lower()
+            if len(word) >= min:
+                words.add(word)
+
+    return words
+
+
+# --------------------------------------------------
+def test_uniq_words():
+    """Test uniq_words"""
+
+    s1 = '?foo, "bar", FOO: $fa,'
+    s2 = '%Apple.; -Pear. ;bANAna!!!'
+
+    assert uniq_words(io.StringIO(s1), 0) == set(['foo', 'bar', 'fa'])
+
+    assert uniq_words(io.StringIO(s1), 3) == set(['foo', 'bar'])
+
+    assert uniq_words(io.StringIO(s2), 0) == set(['apple', 'pear', 'banana'])
+
+    assert uniq_words(io.StringIO(s2), 4) == set(['apple', 'pear', 'banana'])
+
+    assert uniq_words(io.StringIO(s2), 5) == set(['apple', 'banana'])
+
+
+# --------------------------------------------------
 def main():
     """Make a jazz noise here"""
     args = get_args()
@@ -95,27 +139,27 @@ def main():
     logfile = args.logfile
     table = args.table
 
-    file1 = args.FILE[0]
-    file2 = args.FILE[1]
-
     logging.basicConfig(
         filename='.log',
         filemode='w',
         level=logging.DEBUG if args.debug else logging.CRITICAL
     )
 
-    logging.debug('file1 = {}, file2 = {}'.format(file1, file2))
+    logging.debug('file1 = {}, file2 = {}'.format(files[0], files[1]))
+
+    if hamm < 0:
+        die('--distance "{}" must be > 0'.format(hamm))
 
     words1 = []
     words2 = []
 
-    for line in file1:
-        words1 += list(map(str.lower, line.split()))
-    for line in file2:
-        words2 += list(map(str.lower, line.split()))
+    for line1, line2, in files:
+        words1 += list(map(str.lower, line1.split()))
+        words2 += list(map(str.lower, line2.split()))
 
     tup = list(zip(words1, words2))
     matches = {}
+
     for str1, str2 in tup:
         d = dist(str1, str2)
         if (len(str1) and len(str2)) >= min:
@@ -132,6 +176,8 @@ def main():
             print('{:11}{:11}{}'.format(word1, word2, count))
     else:
         print('No words in common')
+
+
 # --------------------------------------------------
 if __name__ == '__main__':
     main()

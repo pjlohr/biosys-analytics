@@ -9,6 +9,7 @@ import argparse
 import sys
 import os
 import logging
+import re
 
 
 # --------------------------------------------------
@@ -109,9 +110,9 @@ def main():
     words2 = []
 
     for line in file1:
-        words1 += line.split()
+        words1 += list(map(str.lower, line.split()))
     for line in file2:
-        words2 += line.split()
+        words2 += list(map(str.lower, line.split()))
 
     tup = list(zip(words1, words2))
     matches = {}
@@ -120,10 +121,17 @@ def main():
         if (len(str1) and len(str2)) >= min:
             if d <= hamm:
                 matches[(str1, str2)] = d
+
     matches = sorted([(x[0], x[1]) for x in matches.items()])
 
-    for words, count in matches:
-        print(words, count)
+    if len(matches) > 0:
+        print('{:11}{:11}{}'.format('word1', 'word2', 'distance'))
+        for pairs, count in matches:
+            word1 = re.sub('[^a-zA-Z0-9]', '', pairs[0])
+            word2 = re.sub('[^a-zA-Z0-9]', '', pairs[1])
+            print('{:11}{:11}{}'.format(word1, word2, count))
+    else:
+        print('No words in common')
 # --------------------------------------------------
 if __name__ == '__main__':
     main()

@@ -158,11 +158,18 @@ def main():
     words2 = sorted(uniq_words(file2, min_len))
     tup = list(zip(words1, words2))
     matches = {}
-
+    print(words1)
+    print(words2)
     for str1, str2 in tup:
         d = dist(str1, str2)
         if d <= hamm:
             matches[(str1, str2)] = d
+
+
+
+
+
+
 
     if len(matches) > 0:
         t = []
@@ -176,10 +183,13 @@ def main():
         if table:
             print(tbl(t, headers=['word1', 'word2', 'distance'], tablefmt='psql'))
         else:
-            print(tbl(t, headers=['word1', 'word2', 'distance'], tablefmt='plain', numalign="left"))
+            print('{}\t{}\t{}'.format('word1', 'word2', 'distance'))
+            for row in t:
+                print('{}\t{}\t{}'.format(row[0], row[1], row[2]))
+            # print(tbl(t, headers=['word1', 'word2', 'distance'], tablefmt='plain', numalign="left"))
 
     else:
-        print('No words in common')
+        print('No words in common.')
 
 
 # --------------------------------------------------

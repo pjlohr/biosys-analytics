@@ -156,20 +156,12 @@ def main():
 
     words1 = sorted(uniq_words(file1, min_len))
     words2 = sorted(uniq_words(file2, min_len))
-    tup = list(zip(words1, words2))
     matches = {}
-    print(words1)
-    print(words2)
-    for str1, str2 in tup:
-        d = dist(str1, str2)
-        if d <= hamm:
-            matches[(str1, str2)] = d
-
-
-
-
-
-
+    for str1 in words1:
+        for str2 in words2:
+            d = dist(str1, str2)
+            if d <= hamm:
+                matches[(str1, str2)] = d
 
     if len(matches) > 0:
         t = []

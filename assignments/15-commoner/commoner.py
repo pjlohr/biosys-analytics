@@ -178,7 +178,6 @@ def main():
             print('{}\t{}\t{}'.format('word1', 'word2', 'distance'))
             for row in t:
                 print('{}\t{}\t{}'.format(row[0], row[1], row[2]))
-            # print(tbl(t, headers=['word1', 'word2', 'distance'], tablefmt='plain', numalign="left"))
 
     else:
         print('No words in common.')

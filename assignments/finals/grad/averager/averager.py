@@ -9,7 +9,7 @@ import argparse
 import sys
 import re
 import os
-
+from statistics import mean
 
 # --------------------------------------------------
 def get_args():
@@ -19,7 +19,7 @@ def get_args():
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
     parser.add_argument(
-        'file', metavar='FILE', help='Input file(s)', nargs='+')
+        'FILE', metavar='FILE', help='Input file(s)', nargs='+')
 
     return parser.parse_args()
 
@@ -43,8 +43,24 @@ def main():
     args = get_args()
     FILES = args.FILE
 
+    pat = re.compile(r"[+-]?\d+(?:\.\d+)?")
+
     for file in FILES:
-        if
+        if not os.path.isfile(file):
+            warn('\"{}\" is not a file'.format(file))
+            continue
+        base = os.path.basename(file)
+        numbers = open(file).read()
+
+        match = list(map(float, pat.findall(numbers)))
+
+        if match:
+            avg = mean(match)
+            print('{:10.02f}: {}'.format(avg, base))
+        else:
+            print('{:10.02f}: {}'.format(0.00, base))
+
+
 # --------------------------------------------------
 if __name__ == '__main__':
     main()
